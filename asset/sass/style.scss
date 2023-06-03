@@ -1,0 +1,21 @@
+body {
+    background-image: url("../img/backgroundlogin.jpg");
+    //background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.myBody .logInForm {
+    width: 50%;
+    margin: auto;
+}
+.myBody .myButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+.myBody .myButton a {
+    color: white;
+    text-decoration: none;
+}
