@@ -6,4 +6,6 @@ Team size : 2
 Developer:
 * Huy Pham 
 * Nam Bui
-         
+</br>
+Project schedule: https://docs.google.com/spreadsheets/d/1-MM2AN-6z0pneywSQKV_1F2vufMGbZDC27YmsXf4G0M/edit#gid=0
+
