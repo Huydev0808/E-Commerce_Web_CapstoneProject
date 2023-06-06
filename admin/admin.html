@@ -19,33 +19,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Admin Style -->
-    <link rel="stylesheet" href="./../asset/sassAdmin/styleAdmin.css">
+    <link rel="stylesheet" href="./../asset/css/styleAdmin.css">
 
 </head>
 
 <body>
     <!-- HEADER -->
-    <header>
-        <div class="container mb-0">
-            <nav class="nav-bar d-flex justify-content-between">
-                <input type="checkbox" id="check"> 
-                <label for="check" class="checkbtn">
-                    <i class="fa-solid fa-bars"></i>
-                </label>           
-                <label class="logo">HN Mobile</label>
-                <ul class="nav-menu">
-                    <li><a class="active" href="#">Admin</a></li>
-                    <li><a href="#">Customer</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Feedback</a></li>
-                </ul>
-                <ul class="nav-person">
-                    <li><a href="">Notification</a></li>
-                    <li><a href="">Avarta</a></li>
-                    <li><a href="">Setting</a></li>
-                </ul>
-            </nav>
+    <header class="d-flex align-items-center justify-content-between">
+        <div class="logo">HN Mobile</div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="nav-bar">
+            <ul>
+                <li><a href="" class="">Home</a></li>
+                <li><a href="" class="active">Admin</a></li>
+                <li><a href="" class="">Customer</a></li>
+                <li><a href="" class="">About</a></li>                    
+            </ul>
         </div>
     </header>
     <!-- SIDE BAR -->
@@ -64,6 +57,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <!-- Script for responsive header -->
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+            navBar = document.querySelector(".nav-bar");
+            navBar.classList.toggle("active");
+        }
+    </script>
 </body>
 
 </html>

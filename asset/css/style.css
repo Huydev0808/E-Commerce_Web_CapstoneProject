@@ -1,3 +1,7 @@
+@charset "UTF-8";
+/*Đặt tên biến
+    $<tên biến> : thuộc tính
+*/
 body {
   background-image: url("../img/backgroundlogin.jpg");
   background-size: cover;
@@ -20,4 +24,13 @@ body {
 .myBody .myButton a {
   color: white;
   text-decoration: none;
+}
+
+.tab-content .card .card-body,
+.tab-content .card .card-header {
+  font-size: 1.2rem;
+}
+
+.tab-content .card .myButton #btnLogin {
+  font-size: 1.3rem;
 }/*# sourceMappingURL=style.css.map */

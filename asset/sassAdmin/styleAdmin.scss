@@ -11,6 +11,9 @@ $header-color-text: white;
 $header-fontsize: 1.5rem;
 $header-background-color: #0082e6;
 $header-background-hover: #1b9bff;
+$header-background-responsive : #51b2fc;
+$display-flex: flex;
+$display-block: block;
 body {
     background: rgb(233, 233, 240);
     background: linear-gradient(90deg, rgba(233, 233, 240, 1) 0%, rgba(246, 246, 246, 1) 100%, rgba(236, 236, 241, 1) 100%);
@@ -20,32 +23,90 @@ header {
     height: 60px;
     width: 100%;
 }
-label.logo {
+header .nav-bar ul li a{
     color: $header-color-text;
-    font-size: 1.8rem;
-    line-height: 60px;
 }
-header .nav-bar ul li{
-    display: inline-block;
-    margin-left: 1rem;
-    line-height: 60px;
-}
-header .nav-bar ul li a {
+header .logo {
+    font-size: 25px;
+    font-weight: 700;
     color: $header-color-text;
-    font-size: 1rem;
-    text-transform: uppercase;
+    padding: 0 50px;
+}
+.hamburger {
+    display: none;
+}
+.nav-bar ul {
+    display: $display-flex;
+    margin-bottom: 0;
+}
+.nav-bar ul li a {
+    display: $display-block;
+    color: $header-color-text;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 0 5px;
     text-decoration: none;
-    padding: 20px 13px;
-    // border-radius: 5px;
 }
-a.active, a:hover {
+.nav-bar ul li a:hover {
     background: $header-background-hover;
-    transition: .5s;
 }
-.checkbtn {
-    position: absolute;
-    right: 20rem;
-    font-size: 3rem;
-    line-height: 37px;
-    color: $header-color-text;
+.nav-bar ul li a.active {
+    background: $header-background-hover;
+}
+@media only screen and (max-width: 1320px) {
+    header {
+        padding: 0 50px;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    header {
+        padding: 0 5px;
+    }
+    .hamburger {
+        display: $display-block;
+        cursor: pointer;
+
+    }
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: $header-color-text;
+        margin: 6px 0;
+    }
+    .nav-bar {
+        height: 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background: $header-background-responsive ;
+        transition: .2s;
+        overflow: hidden;
+    }
+    .nav-bar.active {
+        height: 450px;
+    }
+    .nav-bar ul {
+        display: $display-block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        transition: .5s;
+        opacity: 0;
+    }
+    .nav-bar.active ul {
+        opacity: 1;
+    }
+    .nav-bar ul li a {
+        margin-bottom: 12px;
+        color: red;
+    }
 }
