@@ -7,38 +7,50 @@
     list-style: none;
     box-sizing: border-box;
 }
+
 $header-color-text: white;
 $header-fontsize: 1.5rem;
-$header-background-color: #0082e6;
+$header-background-color: #063146;
 $header-background-hover: #1b9bff;
-$header-background-responsive : #51b2fc;
+$header-background-responsive : #073e59;
+$footer-background-color:#073e59;
 $display-flex: flex;
 $display-block: block;
+
 body {
     background: rgb(233, 233, 240);
     background: linear-gradient(90deg, rgba(233, 233, 240, 1) 0%, rgba(246, 246, 246, 1) 100%, rgba(236, 236, 241, 1) 100%);
 }
+
 header {
     background: $header-background-color;
     height: 60px;
     width: 100%;
+    //box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    position: fixed;
+    top: 0;
 }
-header .nav-bar ul li a{
+
+header .nav-bar ul li a {
     color: $header-color-text;
 }
+
 header .logo {
     font-size: 25px;
     font-weight: 700;
     color: $header-color-text;
     padding: 0 50px;
 }
+
 .hamburger {
     display: none;
 }
+
 .nav-bar ul {
     display: $display-flex;
     margin-bottom: 0;
 }
+
 .nav-bar ul li a {
     display: $display-block;
     color: $header-color-text;
@@ -49,30 +61,35 @@ header .logo {
     margin: 0 5px;
     text-decoration: none;
 }
+
 .nav-bar ul li a:hover {
     background: $header-background-hover;
 }
+
 .nav-bar ul li a.active {
     background: $header-background-hover;
 }
+
 @media only screen and (max-width: 1320px) {
     header {
         padding: 0 50px;
     }
 }
+
 @media only screen and (max-width: 1100px) {
     header {
         padding: 0 30px;
     }
 }
+
 @media only screen and (max-width: 900px) {
     header {
         padding: 0 5px;
     }
+
     .hamburger {
         display: $display-block;
         cursor: pointer;
-
     }
     .hamburger .line {
         width: 30px;
@@ -109,4 +126,58 @@ header .logo {
         margin-bottom: 12px;
         color: red;
     }
+    .sidebar {
+        display: none;
+    }
+}
+//Sliderbar----------------------------------------
+.sidebar {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: $header-background-color;
+}
+.sidebar ul a {
+    display: $display-block;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: $header-color-text;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(255, 255,255, .1);
+    border-bottom: 1px solid black;
+    transition: .2s;
+}
+.sidebar li:hover a {
+    padding-left: 50px;
+}
+.sidebar ul a i {
+    margin-right: 16px;
+}
+footer {
+
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    background: $footer-background-color;
+    color: grey;
+    font-weight: 300;
+    line-height: 35px;
+    font-size: 1rem;
+}
+//DATA TABLE----------------------------------------
+.adminBody {
+    margin-top: 100px;
+}
+.adminBody .headerDataTable {
+    background: $header-background-color;
+    color: $header-color-text;
+}
+.adminBody .headerDataTable th {
+    font-weight: 500;
 }
