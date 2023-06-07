@@ -25,7 +25,7 @@
 
 <body>
     <!-- HEADER -->
-    <header class="d-flex align-items-center justify-content-between">
+    <header class="d-flex align-items-center justify-content-between myHeader">
         <div class="logo">HN Mobile</div>
         <div class="hamburger">
             <div class="line"></div>
@@ -42,10 +42,44 @@
         </div>
     </header>
     <!-- SIDE BAR -->
-
+    <div class="sidebar">
+        <ul>
+            <li><a href="#"><i class="fa-solid fa-qrcode"></i>Dashboard</a></li>
+            <li><a href="#"><i class="fa-solid fa-link"></i>Shortcuts</a></li>
+            <li><a href="#"><i class="fa-solid fa-stream"></i>Overview</a></li>
+            <li><a href="#"><i class="fa-solid fa-calendar-week"></i>Events</a></li>
+            <li><a href="#"><i class="fa-solid fa-question-circle"></i>About</a></li>
+            <li><a href="#"><i class="fa-solid fa-sliders-h"></i>Services</a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+        </ul>
+    </div>
+    <!-- DATA TABLE -->
     <section class="adminBody">
+        <div class="container">
+            <h2>Phone Management</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="headerDataTable">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Photo</th>
+                            <th>Disciption</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyProduct"></tbody>
+                </table>
+            </div>
+        </div>
+
 
     </section>
+    <!-- FOOTER -->
+    <!-- <footer>
+        <span>© 2023 Copyright: HN Mobile</span>
+    </footer> -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
