@@ -37,7 +37,7 @@
                 <li><a href="" class="">Home</a></li>
                 <li><a href="" class="active">Admin</a></li>
                 <li><a href="" class="">Customer</a></li>
-                <li><a href="" class="">About</a></li>                    
+                <li><a href="" class="">About</a></li>
             </ul>
         </div>
     </header>
@@ -64,9 +64,12 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Photo</th>
-                            <th>Disciption</th>
-                            <th>Action</th>
+                            <th>Screen</th>
+                            <th>Back Camera</th>
+                            <th>Front Camera</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Type</th>
                         </tr>
                     </thead>
                     <tbody id="tbodyProduct"></tbody>
@@ -80,7 +83,12 @@
     <!-- <footer>
         <span>© 2023 Copyright: HN Mobile</span>
     </footer> -->
+
+    <!-- Axios -->
     <!-- Optional JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -91,6 +99,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        <!--Admin Area-->
+    <script src="./controller/controller.js"></script>
+    <script src="./services/services.js"></script>
+    
     <!-- Script for responsive header -->
     <script>
         hamburger = document.querySelector(".hamburger");
