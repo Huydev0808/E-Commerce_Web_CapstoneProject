@@ -54,31 +54,117 @@
         </ul>
     </div>
     <!-- DATA TABLE -->
-    <section class="adminBody">
-        <div class="container">
-            <h2>Phone Management</h2>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="headerDataTable">
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Screen</th>
-                            <th>Back Camera</th>
-                            <th>Front Camera</th>
-                            <th>Image</th>
-                            <th>Description</th>
-                            <th>Type</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbodyProduct"></tbody>
-                </table>
+    <section class="adminBody" style="margin-left: 270px;">
+        <h2>Phone Management</h2>
+        <button type="button" class="btn btn-primary mb-3" id="btnAddModal" data-toggle="modal" data-target="#exampleModal">+
+            Add New </button>
+        <div class="table-responsive">
+            <table class="table table-hover dataTable" style="width: 1600px; height: 300px;">
+                <thead class="headerDataTable">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th style="width: 90px;">Price</th>
+                        <th>Screen</th>
+                        <th style="width: 200px;">Back Camera</th>
+                        <th style="width: 150px;">Front Camera</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th style="width: 180px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyProduct"></tbody>
+            </table>
+        </div>
+    </section>
+    <!-- The Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create New Phone</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" id="foodForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phoneID">ID Phone</label>
+                                <input type="text" class="form-control" id="phoneID" placeholder="Input ID" value=""
+                                    required>
+                                <div id="invalidID" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phoneName">Phone Name</label>
+                                <input type="text" class="form-control" id="phoneName" placeholder="Input Phone Name" required>
+                                <div id="invalidTen" class="invalid-form">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="phonePrice">Phone Price</label>
+                                <input type="number" class="form-control" id="phonePrice" placeholder="Input price" value=""
+                                    required>
+                                <div id="invalidGia" class="invalid-feedback">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phoneScreen">Screen</label>
+                                <input type="text" class="form-control" id="phoneScreen" placeholder="Input Phone Screen" required>
+                                <div id="invalidTen" class="invalid-form">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="blackCam">Back Camera</label>
+                                <input type="text" class="form-control" id="backCam" placeholder="Input Back Camera" required>
+                                <div id="invalidTen" class="invalid-form">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="frontCam">Front Camera</label>
+                                <input type="text" class="form-control" id="frontCam" placeholder="Input Front Camera" required>
+                                <div id="invalidTen" class="invalid-form">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="type">Type of Phone</label>
+                                <select class="custom-select d-block w-100" id="phoneType" required>
+                                    <option value="">Choose</option>
+                                    <option value="type1">Iphone</option>
+                                    <option value="type2">Samsung</option>
+                                </select>
+                                <div id="invalidLoai" class="invalid-feedback">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="phonePhoto">Phone photos</label>
+                                <input type="file" class="form-control" id="phonePhoto" placeholder="Choose photo"
+                                    value="" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="moTa">Description</label>
+                            <textarea class="form-control" id="description" rows="3"></textarea>
+                            <div id="invalidMoTa" class="invalid-form">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning" id="btnUpdate">Update</button>
+                    <button type="button" class="btn btn-warning" id="btnAdd">+ Add</button>
+                </div>
             </div>
         </div>
-
-
-    </section>
+    </div>
     <!-- FOOTER -->
     <!-- <footer>
         <span>© 2023 Copyright: HN Mobile</span>
@@ -99,10 +185,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-        <!--Admin Area-->
-    <script src="./controller/controller.js"></script>
-    <script src="./services/services.js"></script>
-    
+    <!--Admin Area-->
+    <script type="module" src="./../admin/controller/main.js"></script>
     <!-- Script for responsive header -->
     <script>
         hamburger = document.querySelector(".hamburger");
