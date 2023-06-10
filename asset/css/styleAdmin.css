@@ -171,4 +171,8 @@ footer {
 
 .adminBody .headerDataTable th {
   font-weight: 500;
+}
+
+.adminBody .dataTable {
+  background-color: white;
 }/*# sourceMappingURL=styleAdmin.css.map */
