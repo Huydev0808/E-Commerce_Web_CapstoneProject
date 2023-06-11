@@ -5,9 +5,9 @@ export default class Product {
         this.id = _id;
         this.name = _name;
         this.price = _price;
-        this.screen = _img;
-        this.backCam = _backCam;
-        this.frontCam = _frontCam;
+        this.screen = _screen;
+        this.backCamera = _backCam;
+        this.frontCamera = _frontCam;
         this.img = _img;
         this.desc = _desc;
         this.typePhone = _typePhone;

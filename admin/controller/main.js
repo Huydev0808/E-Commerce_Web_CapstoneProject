@@ -31,18 +31,25 @@ const renderProductList = (data) => {
         getEle("tbodyProduct").innerHTML = content;
     }
 };
-var getPhoneInformation = function (id) {
-    var phoneName = getEle("phoneName").value;
-    var price = getEle("phonePrice").value;
-    var screen = getEle("phoneScreen").value;
-    var backCam = getEle("backCam").value;
-    var frontCam = getEle("frontCam").value;
-    var img = getEle("phonePhoto").value;
-    var desc = getEle("description").value;
-    var type = getEle("typePhone").value;
+const getPhoneInformation = () => {
+    const id = getEle("phoneID").value;
+    const phoneName = getEle("phoneName").value;
+    const price = getEle("phonePrice").value;
+    const screen = getEle("phoneScreen").value;
+    const backCamera = getEle("backCam").value;
+    const frontCamera = getEle("frontCam").value;
+    //const img = getEle("phonePhoto").value;
+    const desc = getEle("description").value;
+    const typePhone = getEle("typePhone").value;
+
+    //phone Photo
+    let phonePhoto = "";
+    if (getEle("phonePhoto") && getEle("phonePhoto").files.length > 0) {
+        phonePhoto = getEle("phonePhoto").files[0].name;
+    };
 
     //tao doi tuong product tu Product
-    var product = new Product(id, phoneName, price, screen, backCam, frontCam, img, desc, typePhone);
+    var product = new Product(id, phoneName, price, screen, backCamera, frontCamera, phonePhoto, desc, typePhone);
 
     return product;
 };
@@ -61,12 +68,13 @@ getPhoneList();
 const editData = (id) => {
     getEle("exampleModalLabel").innerHTML = "Edit Product";
     getEle("btnAdd").style.display = "none";
+    getEle("btnUpdate").style.display = "block";
 
     api.callApi(`Product/${id}`, "GET", null)
         .then((result) => {
             const product = result.data;
             getEle("phoneID").value = product.id;
-            getEle("phoneID").disabled  = true;
+            getEle("phoneID").disabled = true;
             getEle("phoneName").value = product.name;
             getEle("phonePrice").value = product.price;
             getEle("phoneScreen").value = product.screen;
@@ -81,6 +89,8 @@ const editData = (id) => {
         })
 };
 window.editData = editData;
+
+  
 //Delete Data
 const deleteData = (id) => {
     api.callApi(`Product/${id}`, "DELETE", null)
@@ -105,3 +115,37 @@ getEle("btnAddModal").onclick = function () {
     getEle("phonePhoto").value = "";
     getEle("description").value = "";
 };
+//Add button 
+getEle("btnAddModal").onclick = function () {
+    getEle("phoneID").value = "";
+    getEle("btnUpdate").style.display = "none";
+    getEle("btnAdd").style.display = "block";
+};
+//Add New Phone
+getEle("btnAdd").onclick = function () {
+    const product = getPhoneInformation();
+
+    api.callApi("Product", "POST", product).then(()=> {
+        getPhoneList();
+        document.getElementsByClassName("closeModal")[0].click();
+    }).catch((err) => {
+        console.log(err);
+    })
+};
+//Update Data
+getEle("btnUpdate").onclick = async function () {
+    const product = getPhoneList();
+    // const productDetail = await api.callApi(`Product/${product.id}`,"GET", null);
+    // if (!product.img) {
+    //     product.img = productDetail.data.img;
+    // }
+    const result = await api.callApi(`Product/${product.id}`,"PUT",product);
+    if (result.status === 200 && result.statusText === "OK"){
+        //success
+        // re-render Phone List
+        getPhoneList();
+        document.getElementsByClassName("closeModal")[0].click();
+    } else {
+        //error
+    }
+}; 
