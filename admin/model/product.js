@@ -10,6 +10,6 @@ export default class Product {
         this.frontCamera = _frontCam;
         this.img = _img;
         this.desc = _desc;
-        this.typePhone = _typePhone;
+        this.type = _typePhone;
     }
 };
