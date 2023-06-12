@@ -5,7 +5,7 @@ const api = new Api();
 
 
 const getEle = (id) => document.getElementById(id);
-
+//
 const renderProductList = (data) => {
     let content = "";
     if (data && data.length > 0) {
@@ -18,9 +18,9 @@ const renderProductList = (data) => {
                     <td>${product.screen}</td>
                     <td>${product.backCamera}</td>
                     <td>${product.frontCamera}</td>
-                    <td>${product.img}</td>
+                    <td><img src="${product.img}" width="30%" alt=""/></td>
                     <td>${product.desc}</td>
-                    <td>${product.typePhone === "type1" ? "Iphone" : "Samsung"}</td>
+                    <td>${product.type}</td> 
                     <td>          
                         <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="editData(${product.id})">Edit</button>      
                         <button class="btn btn-danger" onclick="deleteData(${product.id})">Delete</button>      
@@ -40,7 +40,7 @@ const getPhoneInformation = () => {
     const frontCamera = getEle("frontCam").value;
     //const img = getEle("phonePhoto").value;
     const desc = getEle("description").value;
-    const typePhone = getEle("typePhone").value;
+    const type = getEle("typePhone").value;
 
     //phone Photo
     let phonePhoto = "";
@@ -49,7 +49,7 @@ const getPhoneInformation = () => {
     };
 
     //tao doi tuong product tu Product
-    var product = new Product(id, phoneName, price, screen, backCamera, frontCamera, phonePhoto, desc, typePhone);
+    var product = new Product(id, phoneName, price, screen, backCamera, frontCamera, phonePhoto, desc, type);
 
     return product;
 };
@@ -64,11 +64,14 @@ const getPhoneList = () => {
         });
 };
 getPhoneList();
+
 //Edit Data 
 const editData = (id) => {
     getEle("exampleModalLabel").innerHTML = "Edit Product";
-    getEle("btnAdd").style.display = "none";
-    getEle("btnUpdate").style.display = "block";
+    //getEle("btnAdd").style.display = "none";
+    var btnUpdate = `<button class='btn btn-success' onclick='updateProduct(${id})'>Update</button>`;
+    document.getElementsByClassName("modal-footer")[0].innerHTML = btnUpdate;
+    //getEle("btnUpdate").style.display = "block";
 
     api.callApi(`Product/${id}`, "GET", null)
         .then((result) => {
@@ -89,8 +92,19 @@ const editData = (id) => {
         })
 };
 window.editData = editData;
+//Update 
+function updateProduct () {
+    var product = getPhoneInformation();
+    //console.log(product);
+    api.callApi(`Product/${product.id}`, "PUT", product).then(()=> {
+        getPhoneList();
+        document.getElementsByClassName("close")[0].click();
+    }).catch((err) => {
+        console.log(err);
+    })
+};
+window.updateProduct = updateProduct;
 
-  
 //Delete Data
 const deleteData = (id) => {
     api.callApi(`Product/${id}`, "DELETE", null)
@@ -118,7 +132,7 @@ getEle("btnAddModal").onclick = function () {
 //Add button 
 getEle("btnAddModal").onclick = function () {
     getEle("phoneID").value = "";
-    getEle("btnUpdate").style.display = "none";
+    //getEle("btnUpdate").style.display = "none";
     getEle("btnAdd").style.display = "block";
 };
 //Add New Phone
@@ -133,19 +147,20 @@ getEle("btnAdd").onclick = function () {
     })
 };
 //Update Data
-getEle("btnUpdate").onclick = async function () {
-    const product = getPhoneList();
-    // const productDetail = await api.callApi(`Product/${product.id}`,"GET", null);
-    // if (!product.img) {
-    //     product.img = productDetail.data.img;
-    // }
-    const result = await api.callApi(`Product/${product.id}`,"PUT",product);
-    if (result.status === 200 && result.statusText === "OK"){
-        //success
-        // re-render Phone List
-        getPhoneList();
-        document.getElementsByClassName("closeModal")[0].click();
-    } else {
-        //error
-    }
-}; 
+// getEle("btnUpdate").onclick = async function () {
+//     const product = getPhoneList();
+//     // const productDetail = await api.callApi(`Product/${product.id}`,"GET", null);
+//     // if (!product.img) {
+//     //     product.img = productDetail.data.img;
+//     // }
+//     const result = await api.callApi(`Product/${product.id}`,"PUT",product);
+//     if (result.status === 200 && result.statusText === "OK"){
+//         //success
+//         // re-render Phone List
+//         getPhoneList();
+//         document.getElementsByClassName("closeModal")[0].click();
+//     } else {
+//         //error
+//     }
+// }; 
+//Update 1
