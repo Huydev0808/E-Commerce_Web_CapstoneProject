@@ -29,7 +29,9 @@ header {
     //box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     position: fixed;
     top: 0;
+    z-index: 1;
 }
+
 
 header .nav-bar ul li a {
     color: $header-color-text;
@@ -183,4 +185,12 @@ footer {
 }
 .adminBody .dataTable {
     background-color: white;
+}
+//FILTER
+.filterType {
+    padding-right: 20px;
+}
+.custom-select {
+    width: fit-content;
+    align-items: end;
 }
