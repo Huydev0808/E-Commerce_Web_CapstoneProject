@@ -34,9 +34,9 @@
         </div>
         <div class="nav-bar">
             <ul>
-                <li><a href="" class="">Home</a></li>
+                <li><a href="../index.html" class="">Home</a></li>
                 <li><a href="" class="active">Admin</a></li>
-                <li><a href="" class="">Customer</a></li>
+                <li><a href="../customer/view/customer.html" class="">Customer</a></li>
                 <li><a href="" class="">About</a></li>
             </ul>
         </div>
@@ -56,8 +56,25 @@
     <!-- DATA TABLE -->
     <section class="adminBody" style="margin-left: 270px;">
         <h2>Phone Management</h2>
-        <button type="button" class="btn btn-primary mb-3" id="btnAddModal" data-toggle="modal" data-target="#exampleModal">+
-            Add New </button>
+        <div class="row">
+            <div class="col-8">      
+                <button type="button" class="btn btn-primary mb-3" id="btnAddModal" data-toggle="modal" data-target="#exampleModal">+
+                    Add New </button>
+            </div>
+            <div class="col-4">
+                <div class="form-group row filterType">
+                    <label for="selType" class="col-sm-2 col-form-label">Show</label>
+                    <div class="col-sm-10">
+                        <select name="" id="selType" class="custom-select">
+                            <option selected>Select type</option>
+                            <option value="all">All</option>
+                            <option value="Iphone">Iphone</option>
+                            <option value="Samsung">Samsung</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>       
         <div class="table-responsive">
             <table class="table table-hover dataTable" style="width: 1600px; height: 300px;">
                 <thead class="headerDataTable">
@@ -133,9 +150,9 @@
                             <div class="col-md-6 mb-3">
                                 <label for="type">Type of Phone</label>
                                 <select class="custom-select d-block w-100" id="typePhone" required>
-                                    <option value="">Choose</option>
-                                    <option value="type1">Iphone</option>
-                                    <option value="type2">Samsung</option>
+                                    <option value="">All</option>
+                                    <option value="Iphone">Iphone</option>
+                                    <option value="Samsung">Samsung</option>
                                 </select>
                                 <div id="invalidLoai" class="invalid-feedback">
                                 </div>
@@ -144,7 +161,7 @@
                         <div class="mb-3">
                             <div class="form-group">
                                 <label for="phonePhoto">Phone photos</label>
-                                <input type="file" class="form-control" id="phonePhoto" placeholder="Choose photo"
+                                <input type="text" class="form-control" id="phonePhoto" placeholder="Choose photo"
                                     value="" required>
                             </div>
                         </div>

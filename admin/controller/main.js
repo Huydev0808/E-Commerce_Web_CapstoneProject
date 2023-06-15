@@ -20,7 +20,7 @@ const renderProductList = (data) => {
                     <td>${product.frontCamera}</td>
                     <td><img src="${product.img}" width="30%" alt=""/></td>
                     <td>${product.desc}</td>
-                    <td>${product.type}</td> 
+                    <td>${product.type === "Iphone" ? "Iphone" : "Samsung"}</td> 
                     <td>          
                         <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="editData(${product.id})">Edit</button>      
                         <button class="btn btn-danger" onclick="deleteData(${product.id})">Delete</button>      
@@ -39,17 +39,17 @@ const getPhoneInformation = () => {
     const backCamera = getEle("backCam").value;
     const frontCamera = getEle("frontCam").value;
     //const img = getEle("phonePhoto").value;
-    const desc = getEle("description").value;
     const type = getEle("typePhone").value;
 
     //phone Photo
-    let phonePhoto = "";
-    if (getEle("phonePhoto") && getEle("phonePhoto").files.length > 0) {
-        phonePhoto = getEle("phonePhoto").files[0].name;
-    };
-
+    // let phonePhoto = "";
+    // if (getEle("phonePhoto") && getEle("phonePhoto").files.length > 0) {
+    //     phonePhoto = getEle("phonePhoto").files[0].name;
+    // };
+    const phonePhoto = getEle("phonePhoto").value;
+    const desct = getEle("description").value;
     //tao doi tuong product tu Product
-    var product = new Product(id, phoneName, price, screen, backCamera, frontCamera, phonePhoto, desc, type);
+    var product = new Product(id, phoneName, price, screen, backCamera, frontCamera, type, phonePhoto, desct);
 
     return product;
 };
@@ -68,10 +68,8 @@ getPhoneList();
 //Edit Data 
 const editData = (id) => {
     getEle("exampleModalLabel").innerHTML = "Edit Product";
-    //getEle("btnAdd").style.display = "none";
     var btnUpdate = `<button class='btn btn-success' onclick='updateProduct(${id})'>Update</button>`;
     document.getElementsByClassName("modal-footer")[0].innerHTML = btnUpdate;
-    //getEle("btnUpdate").style.display = "block";
 
     api.callApi(`Product/${id}`, "GET", null)
         .then((result) => {
@@ -92,6 +90,7 @@ const editData = (id) => {
         })
 };
 window.editData = editData;
+
 //Update 
 function updateProduct () {
     var product = getPhoneInformation();
@@ -116,9 +115,11 @@ const deleteData = (id) => {
         })
 };
 window.deleteData = deleteData;
+
 //Add new data
 getEle("btnAddModal").onclick = function () {
     getEle("exampleModalLabel").innerHTML = "Create New Phone";
+    getEle("phoneID").disabled = false;
     getEle("phoneID").value = "";
     getEle("phoneName").value = "";
     getEle("phonePrice").value = "";
@@ -128,12 +129,7 @@ getEle("btnAddModal").onclick = function () {
     getEle("typePhone").value = "";
     getEle("phonePhoto").value = "";
     getEle("description").value = "";
-};
-//Add button 
-getEle("btnAddModal").onclick = function () {
-    getEle("phoneID").value = "";
-    //getEle("btnUpdate").style.display = "none";
-    getEle("btnAdd").style.display = "block";
+    getEle("btnAdd").style.display = "inline-block";
 };
 //Add New Phone
 getEle("btnAdd").onclick = function () {
@@ -164,3 +160,15 @@ getEle("btnAdd").onclick = function () {
 //     }
 // }; 
 //Update 1
+//Filter
+getEle("selType").addEventListener("change",async () => {
+    const value = getEle("selType").value;
+    const result = await api.callApi("Product","GET",null);
+    if(result.status === 200 && result.statusText ==="OK") {
+        let findArray = result.data;
+        if (value !== "all") {
+            findArray = result.data.filter((product) => product.type === value);
+        }
+        renderProductList(findArray);
+    }
+});
