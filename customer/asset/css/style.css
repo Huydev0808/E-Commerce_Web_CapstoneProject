@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap");
+
 :root {
   font-size: 16px;
   color: rgb(255, 255, 255);
@@ -12,37 +13,63 @@
   box-sizing: border-box;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
+.navbar {
+  background-color: #00bbf9;
+  margin: 0 auto;
+  justify-content: flex-end;
   align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
-  margin: 0 200px;
-  width: 100%;
 }
 
-.logo a {
+.navbar a {
+  color: #fff;
+  padding: 15px;
+  margin-right: 10px;
   text-decoration: none;
 }
 
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.navbar a.active {
+  background-color: #fff;
+  color: #333;
+  border-radius: 20px;
 }
 
-.menu-item {
-  margin: 0 10px;
-  color: #fff;
-  font-size: 20px;
+.navbar i {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .navbar a:first-child {
+    margin-right: auto;
+    /* Đẩy Mobile HN về bên trái */
+  }
+
+  .navbar a:not(:first-child) {
+    margin-left: 20px;
+  }
+}
+
+.banner{
+margin: 50px 0;
 }
 
 div {
   display: flex;
 }
-
 
 div.banner .phoneBrand {
   display: flex;
@@ -50,6 +77,7 @@ div.banner .phoneBrand {
   z-index: 1;
   flex-direction: column;
 }
+
 #productBrand {
   width: 180%;
   padding: 10%;
@@ -153,6 +181,7 @@ button {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
   }
+
   100% {
     transform: translateY(-100vh) rotate(360deg);
     opacity: 0;
@@ -278,9 +307,11 @@ button {
 .card .details .name-fav strong {
   font-weight: 600;
 }
+
 .card .details .fa-heart {
   color: white;
 }
+
 .fav {
   color: red;
 }
@@ -484,13 +515,14 @@ button {
 .invoice .shipping-items .items-price {
   flex-direction: column;
   justify-content: space-around;
-  
+
 }
 
 .invoice .shipping-items .item-names,
 .invoice .shipping-items .items-price span {
   margin-bottom: 13px;
 }
+
 .invoice .payment {
   flex-direction: column;
 }
@@ -581,9 +613,11 @@ button {
   .side-nav {
     width: 80%;
   }
+
   .invoice .order {
     width: 60%;
   }
+
   .main-cart {
     overflow: scroll;
   }
@@ -593,12 +627,15 @@ button {
   .side-nav {
     width: 100%;
   }
+
   .side-nav .cart-img {
     display: none;
   }
+
   .invoice .order {
     width: 80%;
   }
+
   .nav {
     width: 576px;
     height: 4rem;
@@ -606,6 +643,7 @@ button {
     backdrop-filter: blur(5px); */
     filter: invert(1);
   }
+
   .main-cart {
     justify-content: flex-start;
     flex-wrap: nowrap;
@@ -613,6 +651,7 @@ button {
     height: 95%;
     top: 4rem;
   }
+
   .main-cart .card {
     margin: 20px auto;
   }
